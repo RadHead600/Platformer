@@ -2,9 +2,8 @@
 
 public class StandartBullets : Bullet
 {
-    void Update()
+    private void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, transform.position + direction, speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, transform.position + Direction, Speed * Time.deltaTime);
     }
-
 }

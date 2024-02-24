@@ -3,11 +3,16 @@ using UnityEngine;
 
 public class ExplosiveBullets : Bullet, IGrounded
 {
-    [SerializeField]
-    protected float radius;
+    [SerializeField] private float _radius;
+    [SerializeField] private float _bulletLifeTime = 10;
+    [SerializeField] private float _bulletDestroyLifeTime = 3;
+    [SerializeField] private ParticleSystem _particleSystem;
+    [SerializeField] private Sprite _switchSprite;
+    [SerializeField] private Rigidbody2D _rigidBody2D;
+    [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private CircleCollider2D _circleCollider2D;
 
-    [SerializeField]
-    private Sprite switchSprite;
+    private const float GROUND_RADIUS = 0.2f;
 
     public float Offset
     {
@@ -17,31 +22,32 @@ public class ExplosiveBullets : Bullet, IGrounded
 
     private float offset;
 
-    private Rigidbody2D rigidBody;
     private bool stopRun = false;
 
     private void Start()
     {
-        rigidBody = GetComponent<Rigidbody2D>();
-        Destroy(gameObject, 10.0F);
+        Destroy(gameObject, _bulletLifeTime);
     }
 
-    void Update()
+    private void Update()
     {
         if (!stopRun)
         {
-            gameObject.GetComponent<ParticleSystem>().Play(false);
-            Vector3 position = transform.position; position.z = 20.0F;
-            transform.position = Vector3.MoveTowards(transform.position, transform.position + direction, speed * Time.deltaTime);
-            if (direction.x > 0)
+            _particleSystem.Play(false);
+            Vector3 position = transform.position; 
+            position.z = 20.0f;
+
+            transform.position = Vector3.MoveTowards(transform.position, transform.position + Direction, Speed * Time.deltaTime);
+
+            if (Direction.x > 0)
             {
-                GetComponentInChildren<SpriteRenderer>().flipX = true;
-                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(new Vector3(0, 0, -430f)), Time.deltaTime);
+                Vector3 left_turn_bullet = new Vector3(0, 0, -430f);
+                Turn(left_turn_bullet, true);
             }
             else
             {
-                GetComponentInChildren<SpriteRenderer>().flipX = false;
-                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(new Vector3(0, 0, 70f)), Time.deltaTime);
+                Vector3 right_turn_bullet = new Vector3(0, 0, 70f);
+                Turn(right_turn_bullet, false);
                 transform.rotation = Quaternion.Euler(0, 0, -0.5f);
             }
         }
@@ -49,49 +55,54 @@ public class ExplosiveBullets : Bullet, IGrounded
         Grounded();
     }
 
-    public virtual void Grounded()
+    private void Turn(Vector3 turnBullet, bool isFlipWeapon)
     {
-        Vector3 position = transform.position; position.x = -1.0F;
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.2f, blocks);
-
-        if (colliders.Length > 0.8F && gameObject.GetComponent<CircleCollider2D>() == null)
-        {
-            stopRun = true;
-            StartCoroutine(AddCollider());
-            Destroy(gameObject, 3f);
-        }
+        _spriteRenderer.flipX = isFlipWeapon;
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(turnBullet), Time.deltaTime);
     }
 
-    private IEnumerator AddCollider()
+    public virtual void Grounded()
     {
-        rigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
-        StartCoroutine(CreateExplosion());
-        yield return new WaitForSeconds(0.2f);
+        Vector3 position = transform.position; 
+        position.x = -1.0f;
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, GROUND_RADIUS, Blocks);
+
+        if (colliders.Length > 0.8F && _circleCollider2D == null)
+        {
+            stopRun = true;
+            _rigidBody2D.constraints = RigidbodyConstraints2D.FreezeAll;
+            CreateExplosion();
+            Destroy(gameObject, _bulletDestroyLifeTime);
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Units unit = collision.GetComponentInChildren<Units>();
-        if (unit)
+        if (collision.TryGetComponent(out Unit unit))
         {
-            unit.ReceiveDamage(damage);
+            unit.ReceiveDamage(Damage);
         }
     }
 
-    protected IEnumerator CreateExplosion()
+    protected void CreateExplosion()
     {
-        gameObject.GetComponent<ParticleSystem>().Play(true);
+        _particleSystem.Play(true);
         gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
-        gameObject.AddComponent<CircleCollider2D>().radius = 0;
-        gameObject.GetComponent<CircleCollider2D>().isTrigger = true;
-        GetComponentInChildren<SpriteRenderer>().sprite = switchSprite;
+        _circleCollider2D.radius = 0;
+        _circleCollider2D.isTrigger = true;
+        _spriteRenderer.sprite = _switchSprite;
         transform.rotation = Quaternion.Euler(0, 0, -180);
+        StartCoroutine(ExplosionExpansion());
+    }
 
-        for (float q = 1f; q < radius; q += .1f)
+    private IEnumerator ExplosionExpansion()
+    {
+        float waitingTime = 0.009f;
+        for (float q = 1f; q < _radius; q += .1f)
         {
-            GetComponentInChildren<SpriteRenderer>().transform.localScale = new Vector3(q, q, 1);
-            gameObject.GetComponent<CircleCollider2D>().radius = q;
-            yield return new WaitForSeconds(.009f);
+            _spriteRenderer.transform.localScale = new Vector3(q, q, 1);
+            _circleCollider2D.radius = q;
+            yield return new WaitForSeconds(waitingTime);
         }
     }
 }

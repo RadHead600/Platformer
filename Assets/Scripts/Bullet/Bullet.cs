@@ -2,16 +2,16 @@
 
 public abstract class Bullet : MonoBehaviour
 {
-    [SerializeField]
-    protected LayerMask blocks;
+    [SerializeField] private LayerMask _blocks;
 
-    public float Speed { get => speed; set => speed = value; }
-    public int Damage { get => damage; set => damage = value; }
-    public Vector3 Direction { set => direction = value; }
+    public float Speed { get => _speed; set => _speed = value; }
+    public int Damage { get => _damage; set => _damage = value; }
+    public Vector3 Direction { get => _direction; set => _direction = value; }
+    public LayerMask Blocks => _blocks;
 
-    protected Vector3 direction;
-    protected float speed;
-    protected int damage;
+    private Vector3 _direction;
+    private float _speed;
+    private int _damage;
 
     private void Start()
     {
@@ -20,22 +20,18 @@ public abstract class Bullet : MonoBehaviour
 
     protected void OnTriggerEnter2D(Collider2D collider)
     {
-        Units unit = collider.GetComponentInChildren<Units>();
+        if (collider.TryGetComponent(out Unit unit))
+        {
+            unit.ReceiveDamage(_damage);
 
-        if (collider.CompareTag("Head"))
-        {
-            unit = collider.GetComponentInParent<Units>();
-            unit.ReceiveDamage(damage * 2);
+            if (unit.CompareTag("Head"))
+                unit.ReceiveDamage(_damage);
+
             Destroy(gameObject);
-        }
-        else if (unit != null)
-        {
-            unit.ReceiveDamage(damage);
-            Destroy(gameObject);
+            return;
         }
 
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.2f, blocks);
-
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.2f, _blocks);
         if (colliders.Length > 0.8F)
         {
             Destroy(gameObject);

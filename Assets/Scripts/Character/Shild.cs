@@ -1,38 +1,36 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Shild : Units
+public class Shild : Unit
 {
-    [SerializeField]
-    private int armorQuantity;
-
-    private int hp;
+    [SerializeField] private int _armorQuantity;
+    [SerializeField] private CharacterStatUI _characterStatUI;
 
     private void Start()
     {
-        HP = armorQuantity;
+        HP = _armorQuantity;
     }
 
-    public IEnumerator ReceiveDamageArmor(int quantity)
+    public void AddArmor(int quantity)
     {
-        hp = HP;
-        yield return new WaitForSeconds(0.1f);
-
-        if (hp > 100)
-        {
-            HP = 100;
-        }
-
-        if (hp - quantity <= 0)
-        {
-            HP = 0;
-            gameObject.SetActive(false);
-        }
+        HpChange(HP + quantity);
     }
 
     public override int ReceiveDamage(int quantity)
     {
-        StartCoroutine(ReceiveDamageArmor(quantity));
-        return HP -= quantity;
+        HpChange(HP - quantity);
+        if (HP <= 0)
+            Die();
+        return HP;
+    }
+
+    private void HpChange(int hp)
+    {
+        HP = hp;
+        _characterStatUI.ChangeText(_characterStatUI.ArmorText, HP.ToString());
+    }
+
+    public override void Die()
+    {
+        gameObject.SetActive(false);
     }
 }

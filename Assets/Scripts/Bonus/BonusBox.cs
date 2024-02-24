@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 
-public class BonusBox : Units
+public class BonusBox : Unit
 {
-    [SerializeField]
-    private GameObject[] bonuses;
+    [SerializeField] private GameObject[] _bonuses;
 
     private void Start()
     {
@@ -12,9 +11,7 @@ public class BonusBox : Units
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Bullet bullet = collision.GetComponentInChildren<Bullet>();
-        
-        if(bullet != null)
+        if(collision.TryGetComponent(out Bullet bullet))
         {
             DropBonus();
         }
@@ -22,7 +19,7 @@ public class BonusBox : Units
 
     public void DropBonus()
     {
-        GameObject dropBonus = Instantiate(bonuses[Random.Range(0, bonuses.Length)].gameObject, transform.position, transform.rotation) as GameObject;
+        GameObject dropBonus = Instantiate(_bonuses[Random.Range(0, _bonuses.Length)].gameObject, transform.position, transform.rotation);
         dropBonus.SetActive(true);
         Destroy(gameObject);  
     }

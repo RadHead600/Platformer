@@ -5,7 +5,6 @@ public class Animation : MonoBehaviour
     private Animator animator;
     private bool isRun;
 
-
     public bool IsRun
     {
         get => isRun;

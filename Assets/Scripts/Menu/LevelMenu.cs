@@ -1,30 +1,29 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class LevelMenu : MonoBehaviour, IOpenMenu
 {
-    [SerializeField]
-    private Button[] starsLevel;
+    [SerializeField] private LevelUI[] _levels;
+
+    private const string IS_NOT_COMPLETED = "Не пройдено";
+    private const string IS_COMPLETED = "Получено";
+    private const string STARS = "звезда(ы)";
 
     void Start()
     {
-        for(int i = 0; i < starsLevel.Length; i++)
+        _levels[0].LevelButton.interactable = true;
+
+        for (int i = 1; i < _levels.Length; i++)
         {
-            if (SaveParameters.levelStars[i] > 0 && SaveParameters.levelStars[i] <= 3)
+            if (SaveParameters.levelStars[i] > 0)
             {
-                starsLevel[i].interactable = true;
-                starsLevel[i].GetComponentsInChildren<Text>()[1].text = $"Получено {SaveParameters.levelStars[i]} звезда(ы)";
+                _levels[i].LevelButton.interactable = true;
+                _levels[i].CompletedText.text = $"{IS_COMPLETED} {SaveParameters.levelStars[i]} {STARS}";
+                continue;
             }
-            else
-            {
-                starsLevel[i].interactable = false;
-                if (i == 0)
-                {
-                    starsLevel[i].interactable = true;
-                }
-                starsLevel[i].GetComponentsInChildren<Text>()[1].text = "Не пройдено";
-            }
+
+            _levels[i].CompletedText.text = IS_NOT_COMPLETED;
+            _levels[i].LevelButton.interactable = false;
         }
     }
 

@@ -1,88 +1,46 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class HelicopterMachineGun : Enemy, IWeaponRotate
+public class HelicopterMachineGun : Enemy
 {
-    [SerializeField]
-    private GameObject machineGun;
+    [SerializeField] private GameObject _machineGun;
+    [SerializeField] private RotateWeapon _rotateWeapon;
+    [SerializeField] private Weapon _weapon;
+    [SerializeField] private float _speed;
 
-    [SerializeField]
-    private float speed;
-
-    [SerializeField]
-    private int hp;
-
-    private int offset;
-
-    private Vector3 difference;
+    private float _offset;
+    private Vector3 _difference;
+    private Character _character;
 
     private void Start()
     {
-        if (player == null)
-        {
-            player = FindObjectOfType<Character>().gameObject;
-        }
-        Destroy(gameObject, 120);
-        HP = hp;
+        if (_character == null)
+            _character = FindObjectOfType<Character>();
+    }
+
+    private void FixedUpdate()
+    {
+        _difference = _character.transform.position - _machineGun.transform.position;
+        _rotateWeapon.WeaponRotate(ref _offset, _difference, _machineGun);
     }
 
     private void Update()
     {
-        RotateWeapons();
         Fly();
-        Attack();
-
-        if (HP <= 0)
-        {
-            HP = 0;
-            Die();
-        }
-    }
-
-    public void RotateWeapons()
-    {
-        difference = player.transform.position - machineGun.transform.position;
-        float rotate = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-        machineGun.transform.rotation = Quaternion.Euler(0f, 0f, rotate + offset);
-
-        Vector3 pos = machineGun.transform.localScale;
-        machineGun.transform.localScale = new Vector3(
-            (difference.x < 0 ? Math.Abs(pos.x) * -1 : Math.Abs(pos.x)) * (transform.localScale.x > 0 ? -1 : 1),
-            pos.y,
-            pos.z
-            );
-
-        if (pos.x < 0)
-        {
-            offset = 0;
-            if (transform.localScale.x < 0)
-                offset = -180;
-        }
-        else
-        {
-            offset = -180;
-            if (transform.localScale.x < 0)
-                offset = 0;
-        }
-
-    }
-
-    private void Attack()
-    {
-        Weapons weaponAttack = GetComponentInChildren<Weapons>();
-
-        weaponAttack.isEnemy = true;
-        weaponAttack.Attack(difference);
     }
 
     private void Fly()
     {
-        transform.position += new Vector3(speed * Time.deltaTime, 0, 0);
+        transform.position += new Vector3(_speed * Time.deltaTime, 0, 0);
     }
 
     public override int ReceiveDamage(int damage)
     {
-        return HP -= damage;
+        HP -= damage;
+
+        if (HP <= MinHp)
+            Die();
+
+        return HP;
     }
 
 }

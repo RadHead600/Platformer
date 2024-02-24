@@ -3,14 +3,13 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour, IOpenMenu
 {
-    [SerializeField]
-    private GameObject pauseMenu;
+    [SerializeField] private GameObject _pauseMenu;
 
-    private bool isPause;
+    private bool _isPause;
 
     void Start()
     {
-        pauseMenu.SetActive(false);    
+        _pauseMenu.SetActive(false);    
     }
 
     void Update()
@@ -23,9 +22,9 @@ public class PauseMenu : MonoBehaviour, IOpenMenu
 
     public void Pause()
     {
-        isPause = !isPause;
-        Time.timeScale = (!isPause ? 1 : 0);
-        pauseMenu.SetActive(isPause);
+        _isPause = !_isPause;
+        Time.timeScale = (_isPause ? 0 : 1);
+        _pauseMenu.SetActive(_isPause);
     }
 
     public void OpenMenu()

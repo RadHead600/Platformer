@@ -2,28 +2,23 @@
 
 public class Menu : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject shop;
-
-    [SerializeField]
-    private GameObject levelsMenu;
+    [SerializeField] private Shop _shop;
+    [SerializeField] private GameObject _levelsMenu;
 
     void Awake()
     {
-        gameObject.SetActive(true);
-        shop.SetActive(false);
+        ChangeActive(gameObject, _shop.gameObject, true);
         AddStaticInformation();
     }
 
     private void AddStaticInformation()
     {
-        shop.GetComponent<Shop>().StaticWeapons();
+        _shop.StaticWeapons();
     }
 
     public void OpenShop()
     {
-        gameObject.SetActive(false);
-        shop.SetActive(true);
+        ChangeActive(gameObject, _shop.gameObject, false);
     }
 
     public void CloseGame()
@@ -33,7 +28,12 @@ public class Menu : MonoBehaviour
 
     public void OpenLevelsMenu()
     {
-        gameObject.SetActive(false);
-        levelsMenu.SetActive(true);
+        ChangeActive(gameObject, _levelsMenu, false);
+    }
+
+    private void ChangeActive(GameObject canvasOne, GameObject canvasTwo, bool isActive)
+    {
+        canvasOne.SetActive(isActive);
+        canvasTwo.SetActive(!isActive);
     }
 }

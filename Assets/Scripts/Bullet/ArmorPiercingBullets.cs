@@ -2,35 +2,33 @@
 
 public class ArmorPiercingBullets : Bullet
 {
+    [SerializeField] private float _bulletLifeTime = 5;
+
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, transform.position + direction, speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, transform.position + Direction, Speed * Time.deltaTime);
     }
 
     protected new void OnTriggerEnter2D(Collider2D collider)
     {
-        Units unit = collider.GetComponentInChildren<Units>();
+        if (collider.TryGetComponent(out Unit unit))
+        {
+            unit.ReceiveDamage(Damage);
 
-        if (collider.CompareTag("Head"))
-        {
-            unit = collider.GetComponentInParent<Units>();
-            unit.ReceiveDamage(damage * 2);
-        }
-        else if (unit)
-        {
-            unit.ReceiveDamage(damage);
+            if (unit.CompareTag("Head"))
+            {
+                unit.ReceiveDamage(Damage);
+            }
         }
 
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.2f, blocks);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.2f, Blocks);
 
         if (colliders.Length > 0.8F)
-        {
             Destroy(gameObject);
-        }
     }
 
     protected override void DestroyBullet()
     {
-        Destroy(gameObject, 5);
+        Destroy(gameObject, _bulletLifeTime);
     }
 }

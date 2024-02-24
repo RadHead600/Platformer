@@ -1,14 +1,12 @@
 ﻿using UnityEngine;
 
-public class EnemyDropShild : EnemyShoot
+public class EnemyDropShild : EnemyAttack
 {
-    [SerializeField]
-    private GameObject shild;
+    [SerializeField] private GameObject _shild;
 
     public override void Die()
     {
-        SaveParameters.levelPoints[SaveParameters.levelActive] += points;
-        Instantiate(shild, gameObject.transform.position, shild.transform.rotation);
+        Instantiate(_shild, gameObject.transform.position, _shild.transform.rotation);
         Destroy(gameObject);
     }
 }

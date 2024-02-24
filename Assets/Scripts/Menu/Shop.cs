@@ -5,15 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class Shop : MonoBehaviour, IOpenMenu
 {
-    [SerializeField]
-    private GameObject[] weapons;
+    [SerializeField] private Weapon[] _weapons;
 
-    [SerializeField]
-    private Text amountMoney;
+    [SerializeField] private Text _amountMoney;
 
     private void Awake()
     {
-        amountMoney.text = SaveParameters.money.ToString();
+        _amountMoney.text = SaveParameters.money.ToString();
         StaticWeapons();
         SearchEqiupWeapon();
     }
@@ -29,10 +27,10 @@ public class Shop : MonoBehaviour, IOpenMenu
             SaveParameters.levelActive = 1;
 
             SaveParameters.money = 0;
-            amountMoney.text = SaveParameters.money.ToString();
-            SaveParameters.weaponsBuy = new GameObject[weapons.Length];
+            _amountMoney.text = SaveParameters.money.ToString();
+            SaveParameters.weaponsBuy = new Weapon[_weapons.Length];
             SaveParameters.weaponEquip = 0;
-            SaveParameters.weaponsBuy[0] = weapons[0];
+            SaveParameters.weaponsBuy[0] = _weapons[0];
         }
     }
 
@@ -42,7 +40,7 @@ public class Shop : MonoBehaviour, IOpenMenu
 
         if (Char.IsDigit(isBuy[weaponNum].text[0]))
         {
-            BuyWeapon(isBuy[weaponNum], weapons[weaponNum], weaponNum);
+            BuyWeapon(isBuy[weaponNum], _weapons[weaponNum], weaponNum);
         }
         else if(isBuy[weaponNum].text == "Экипировать")
         {
@@ -55,7 +53,7 @@ public class Shop : MonoBehaviour, IOpenMenu
     {
         Text[] isBuy = gameObject.GetComponentsInChildren<Text>();
 
-        foreach(GameObject weapon in SaveParameters.weaponsBuy)
+        foreach(Weapon weapon in SaveParameters.weaponsBuy)
         {
             foreach(Button butWeapon in gameObject.GetComponentsInChildren<Button>())
             {
@@ -76,7 +74,7 @@ public class Shop : MonoBehaviour, IOpenMenu
         isBuy[SaveParameters.weaponEquip].text = "Экипирован";
     }
 
-    private void BuyWeapon(Text isBuy, GameObject weapon, int weaponNum)
+    private void BuyWeapon(Text isBuy, Weapon weapon, int weaponNum)
     {
         int price = int.Parse(isBuy.text.Trim().Replace(" ", string.Empty));
         if (SaveParameters.money >= price)
@@ -86,7 +84,7 @@ public class Shop : MonoBehaviour, IOpenMenu
             gameObject.GetComponentsInChildren<Button>()[weaponNum].GetComponent<Image>().material = null;
             SaveParameters.weaponsBuy[weaponNum] = weapon;
             SaveParameters.money -= price;
-            amountMoney.text = SaveParameters.money.ToString();
+            _amountMoney.text = SaveParameters.money.ToString();
         }
     }
 
