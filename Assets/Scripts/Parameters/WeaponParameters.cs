@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
-public class WeaponParameters
+[CreateAssetMenu(fileName = "WeaponParameters", menuName = "CustomParameters/WeaponParameters")]
+public class WeaponParameters : ScriptableObject
 {
     [SerializeField] private ResourcesBullet _resourcesBullet;
     [SerializeField] private float _rechargeTime;

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class EnemyAttack : Enemy
+public class EnemyAttack : MonoBehaviour
 {
     [SerializeField] private RotateWeapon _rotateWeapon;
     [SerializeField] private GameObject _hand;

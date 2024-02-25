@@ -1,17 +1,18 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
-public class CharacterStatUI : MonoBehaviour
+public class CharacterStatsUI : MonoBehaviour
 {
-    [SerializeField] private Text _hpText;
-    [SerializeField] private Text _armorText;
-    [SerializeField] private Text _bulletsText;
+    [SerializeField] private TextMeshProUGUI _hpText;
+    [SerializeField] private TextMeshProUGUI _armorText;
+    [SerializeField] private TextMeshProUGUI _bulletsText;
 
-    public Text HpText => _hpText;
-    public Text ArmorText => _armorText;
-    public Text BulletsText => _bulletsText;
+    public TextMeshProUGUI HpText => _hpText;
+    public TextMeshProUGUI ArmorText => _armorText;
+    public TextMeshProUGUI BulletsText => _bulletsText;
 
-    public void ChangeText(Text text, string content)
+    public void ChangeText(TextMeshProUGUI text, string content)
     {
         text.text = content;
     }

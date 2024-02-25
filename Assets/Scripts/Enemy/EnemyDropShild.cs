@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class EnemyDropShild : EnemyAttack
+public class EnemyDropShild : Enemy
 {
     [SerializeField] private GameObject _shild;
 

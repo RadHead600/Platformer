@@ -46,6 +46,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -165,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 813663e6b01181244b5edefe508ec1b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hpAdd: 25
+  _hpAdd: 10
 --- !u!61 &4427759852565331652
 BoxCollider2D:
   m_ObjectHideFlags: 0

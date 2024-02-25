@@ -5,8 +5,7 @@ public class CharacterAttack : MonoBehaviour
 {
     [SerializeField] private Character _character;
     [SerializeField] private CharacterWeapon _characterWeapon;
-    [SerializeField] private int _minBulletInMagazine = 0;
-    [SerializeField] private CharacterStatUI _characterStatUI;
+    [SerializeField] private CharacterStatsUI _characterStatUI;
 
     public IEnumerator Attack()
     {
@@ -17,6 +16,7 @@ public class CharacterAttack : MonoBehaviour
         {
             _characterWeapon.Weapon.BulletInMagazine = _characterWeapon.Weapon.WeaponParameters.BulletInmagazine;
             yield return new WaitForSeconds(_characterWeapon.Weapon.WeaponParameters.RechargeTime);
+            _character.AttackCoroutine = null;
             yield break;
         }
 
@@ -24,5 +24,6 @@ public class CharacterAttack : MonoBehaviour
         _characterWeapon.Weapon.Attack(difference);
         _characterStatUI.ChangeText(_characterStatUI.BulletsText, _characterWeapon.Weapon.BulletInMagazine.ToString());
         yield return new WaitForSeconds(_characterWeapon.Weapon.WeaponParameters.Delay);
+        _character.AttackCoroutine = null;
     }
 }

@@ -92,15 +92,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7802cae6c3be71c46b0bfd65e8dfa126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuEndGame: {fileID: 0}
-  deletionExceptions:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 4037834647518039082}
-  stars:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  textPoints: {fileID: 0}
-  textMoney: {fileID: 0}
+  _menuEndGame: {fileID: 0}
+  _lossMenu: {fileID: 0}
+  _completeStarPercent: []
+  _stars: []
+  _textPoints: {fileID: 0}
+  _textMoney: {fileID: 0}

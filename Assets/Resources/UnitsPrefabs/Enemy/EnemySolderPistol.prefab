@@ -46,6 +46,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -127,6 +128,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -181,6 +183,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5929933030105361199, guid: ab79d83fcbee6fc4e96f53a029afc8e2,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5929933030105361199, guid: ab79d83fcbee6fc4e96f53a029afc8e2,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.5272255
       objectReference: {fileID: 0}
@@ -196,6 +203,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5929933030105361199, guid: ab79d83fcbee6fc4e96f53a029afc8e2,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5929933030105361199, guid: ab79d83fcbee6fc4e96f53a029afc8e2,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -207,16 +219,6 @@ PrefabInstance:
     - target: {fileID: 5929933030105361199, guid: ab79d83fcbee6fc4e96f53a029afc8e2,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5929933030105361199, guid: ab79d83fcbee6fc4e96f53a029afc8e2,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5929933030105361199, guid: ab79d83fcbee6fc4e96f53a029afc8e2,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5929933030105361199, guid: ab79d83fcbee6fc4e96f53a029afc8e2,
@@ -249,6 +251,11 @@ PrefabInstance:
       propertyPath: points
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 9116492615603411387, guid: ab79d83fcbee6fc4e96f53a029afc8e2,
+        type: 3}
+      propertyPath: _weapon
+      value: 
+      objectReference: {fileID: 7199563964328321428}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab79d83fcbee6fc4e96f53a029afc8e2, type: 3}
 --- !u!4 &7489435386161341212 stripped
@@ -283,6 +290,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5057836410551080789, guid: 6d173d121fd4d84419b5d8f7e832abf7,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5057836410551080789, guid: 6d173d121fd4d84419b5d8f7e832abf7,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -295,6 +307,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5057836410551080789, guid: 6d173d121fd4d84419b5d8f7e832abf7,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9999976
       objectReference: {fileID: 0}
     - target: {fileID: 5057836410551080789, guid: 6d173d121fd4d84419b5d8f7e832abf7,
         type: 3}
@@ -313,16 +330,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5057836410551080789, guid: 6d173d121fd4d84419b5d8f7e832abf7,
         type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9999976
-      objectReference: {fileID: 0}
-    - target: {fileID: 5057836410551080789, guid: 6d173d121fd4d84419b5d8f7e832abf7,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5057836410551080789, guid: 6d173d121fd4d84419b5d8f7e832abf7,
-        type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
@@ -338,16 +345,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6747355613538758118, guid: 6d173d121fd4d84419b5d8f7e832abf7,
         type: 3}
-      propertyPath: posAttack
-      value: 
-      objectReference: {fileID: 7881805045030717417}
-    - target: {fileID: 6747355613538758118, guid: 6d173d121fd4d84419b5d8f7e832abf7,
-        type: 3}
-      propertyPath: recharge
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6747355613538758118, guid: 6d173d121fd4d84419b5d8f7e832abf7,
-        type: 3}
       propertyPath: speed
       value: 6
       objectReference: {fileID: 0}
@@ -356,8 +353,36 @@ PrefabInstance:
       propertyPath: damage
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6747355613538758118, guid: 6d173d121fd4d84419b5d8f7e832abf7,
+        type: 3}
+      propertyPath: recharge
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6747355613538758118, guid: 6d173d121fd4d84419b5d8f7e832abf7,
+        type: 3}
+      propertyPath: posAttack
+      value: 
+      objectReference: {fileID: 7881805045030717417}
+    - target: {fileID: 6747355613538758118, guid: 6d173d121fd4d84419b5d8f7e832abf7,
+        type: 3}
+      propertyPath: _weaponParameters
+      value: 
+      objectReference: {fileID: 11400000, guid: 12cebecae91ec1b46afda9f96ed6cd84,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d173d121fd4d84419b5d8f7e832abf7, type: 3}
+--- !u!114 &7199563964328321428 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6747355613538758118, guid: 6d173d121fd4d84419b5d8f7e832abf7,
+    type: 3}
+  m_PrefabInstance: {fileID: 4488559861491633266}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75966a3eff3056a4bb841aefed73aaec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7881805045030717417 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5992983253885717403, guid: 6d173d121fd4d84419b5d8f7e832abf7,

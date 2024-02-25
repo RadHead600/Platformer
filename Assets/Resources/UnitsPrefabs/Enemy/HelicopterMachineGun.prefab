@@ -78,6 +78,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -145,6 +146,10 @@ EdgeCollider2D:
   - {x: -1.0885036, y: -0.61543036}
   - {x: -1.3346565, y: -0.76993513}
   - {x: -2.497469, y: -0.7186539}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!50 &9118942453365991608
 Rigidbody2D:
   serializedVersion: 4
@@ -179,6 +184,7 @@ GameObject:
   - component: {fileID: 3336633825626035865}
   - component: {fileID: 3336633825626035863}
   - component: {fileID: 7984566466216101266}
+  - component: {fileID: 8056741388587573118}
   m_Layer: 9
   m_Name: HelicopterMachineGun
   m_TagString: Untagged
@@ -234,6 +240,10 @@ EdgeCollider2D:
   - {x: -1.0885036, y: -0.61543036}
   - {x: -1.3346565, y: -0.76993513}
   - {x: -2.497469, y: -0.7186539}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!50 &3336633825626035865
 Rigidbody2D:
   serializedVersion: 4
@@ -267,11 +277,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2476dd374e3db5a45a255a2b0b1cdd61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  points: 350
-  machineGun: {fileID: 3336633826587514600}
-  speed: -3
-  hp: 150
+  _minHp: 0
+  _hp: 100
+  _rigidbody2D: {fileID: 3336633825626035865}
+  _points: 200
+  _machineGun: {fileID: 3336633826587514600}
+  _rotateWeapon: {fileID: 8056741388587573118}
+  _weapon: {fileID: 5860275577401687729}
+  _speed: 1
 --- !u!114 &7984566466216101266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,11 +297,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb72f1183c08f394195739ce5a0d3ea9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activePos: {fileID: 4495914849160740232}
-  ativeRange: 20
-  entityLayer:
+  _activePos: {fileID: 4495914849160740232}
+  _ativeRange: 10
+  _entityLayer:
     serializedVersion: 2
     m_Bits: 1024
+--- !u!114 &8056741388587573118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3336633825626035867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f70eb11309515724297b800481587b2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _body: {fileID: 3336633826587514601}
 --- !u!1001 &820504499358595950
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -300,6 +326,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Helicopter1_0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2678831128167443847, guid: 5e1fd6198e08b1148935e39853dcaaec,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2678831128167443847, guid: 5e1fd6198e08b1148935e39853dcaaec,
         type: 3}
@@ -318,6 +349,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2678831128167443847, guid: 5e1fd6198e08b1148935e39853dcaaec,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2678831128167443847, guid: 5e1fd6198e08b1148935e39853dcaaec,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -329,16 +365,6 @@ PrefabInstance:
     - target: {fileID: 2678831128167443847, guid: 5e1fd6198e08b1148935e39853dcaaec,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2678831128167443847, guid: 5e1fd6198e08b1148935e39853dcaaec,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2678831128167443847, guid: 5e1fd6198e08b1148935e39853dcaaec,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2678831128167443847, guid: 5e1fd6198e08b1148935e39853dcaaec,
@@ -370,3 +396,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 820504499358595950}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5860275577401687729 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6498947047294256607, guid: 5e1fd6198e08b1148935e39853dcaaec,
+    type: 3}
+  m_PrefabInstance: {fileID: 820504499358595950}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3336633826587514600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75966a3eff3056a4bb841aefed73aaec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

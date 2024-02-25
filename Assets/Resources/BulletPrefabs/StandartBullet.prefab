@@ -46,6 +46,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -143,9 +144,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4291c8adc1826b14b814d54a11732cf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blocks:
+  _blocks:
     serializedVersion: 2
-    m_Bits: 264448
+    m_Bits: 400128
 --- !u!50 &8026163583615758012
 Rigidbody2D:
   serializedVersion: 4

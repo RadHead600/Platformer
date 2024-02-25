@@ -46,6 +46,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -127,6 +128,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -181,6 +183,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5929933030105361199, guid: ab79d83fcbee6fc4e96f53a029afc8e2,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5929933030105361199, guid: ab79d83fcbee6fc4e96f53a029afc8e2,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.7008753
       objectReference: {fileID: 0}
@@ -196,6 +203,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5929933030105361199, guid: ab79d83fcbee6fc4e96f53a029afc8e2,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5929933030105361199, guid: ab79d83fcbee6fc4e96f53a029afc8e2,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -207,16 +219,6 @@ PrefabInstance:
     - target: {fileID: 5929933030105361199, guid: ab79d83fcbee6fc4e96f53a029afc8e2,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5929933030105361199, guid: ab79d83fcbee6fc4e96f53a029afc8e2,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5929933030105361199, guid: ab79d83fcbee6fc4e96f53a029afc8e2,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5929933030105361199, guid: ab79d83fcbee6fc4e96f53a029afc8e2,
@@ -249,6 +251,11 @@ PrefabInstance:
       propertyPath: points
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 9116492615603411387, guid: ab79d83fcbee6fc4e96f53a029afc8e2,
+        type: 3}
+      propertyPath: _weapon
+      value: 
+      objectReference: {fileID: 8530322218733557586}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab79d83fcbee6fc4e96f53a029afc8e2, type: 3}
 --- !u!4 &4803618454629958152 stripped
@@ -283,6 +290,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6596041800799617577, guid: a29d3a6b1836a1c469b67705811c1dcb,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6596041800799617577, guid: a29d3a6b1836a1c469b67705811c1dcb,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -295,6 +307,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6596041800799617577, guid: a29d3a6b1836a1c469b67705811c1dcb,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6596041800799617577, guid: a29d3a6b1836a1c469b67705811c1dcb,
         type: 3}
@@ -313,16 +330,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6596041800799617577, guid: a29d3a6b1836a1c469b67705811c1dcb,
         type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6596041800799617577, guid: a29d3a6b1836a1c469b67705811c1dcb,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6596041800799617577, guid: a29d3a6b1836a1c469b67705811c1dcb,
-        type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
@@ -338,9 +345,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7973148343906759423, guid: a29d3a6b1836a1c469b67705811c1dcb,
         type: 3}
-      propertyPath: posAttack
-      value: 
-      objectReference: {fileID: 4638666678510742314}
+      propertyPath: speed
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 7973148343906759423, guid: a29d3a6b1836a1c469b67705811c1dcb,
         type: 3}
       propertyPath: damage
@@ -348,16 +355,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7973148343906759423, guid: a29d3a6b1836a1c469b67705811c1dcb,
         type: 3}
-      propertyPath: speed
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 7973148343906759423, guid: a29d3a6b1836a1c469b67705811c1dcb,
-        type: 3}
       propertyPath: recharge
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7973148343906759423, guid: a29d3a6b1836a1c469b67705811c1dcb,
+        type: 3}
+      propertyPath: posAttack
+      value: 
+      objectReference: {fileID: 4638666678510742314}
+    - target: {fileID: 7973148343906759423, guid: a29d3a6b1836a1c469b67705811c1dcb,
+        type: 3}
+      propertyPath: _weaponParameters
+      value: 
+      objectReference: {fileID: 11400000, guid: b71648d6635f8b149b528e77226d64ca,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a29d3a6b1836a1c469b67705811c1dcb, type: 3}
+--- !u!114 &8530322218733557586 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7973148343906759423, guid: a29d3a6b1836a1c469b67705811c1dcb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1785566133381899693}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75966a3eff3056a4bb841aefed73aaec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4638666678510742314 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6383923065677467271, guid: a29d3a6b1836a1c469b67705811c1dcb,

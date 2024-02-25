@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class CharacterWeapon : Unit
+public class CharacterWeapon : MonoBehaviour
 {
     [SerializeField] private GameObject _hand;
 

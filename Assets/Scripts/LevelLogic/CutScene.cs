@@ -20,7 +20,7 @@ public class CutScene : MonoBehaviour
 
     private IEnumerator EndCutScene()
     {
-        yield return new WaitForSeconds(((float)_playableDirector.duration));
+        yield return new WaitForSeconds(((float)_playableDirector.duration) - 0.5f);
 
         _character.enabled = true;
         ChangeEnemyEnabled(true);

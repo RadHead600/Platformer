@@ -46,9 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9a57ba903f3daa46870d938f169de4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blocks:
+  _blocks:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 135936
+  _bulletLifeTime: 5
 --- !u!50 &5276506862428169409
 Rigidbody2D:
   serializedVersion: 4
@@ -132,6 +133,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

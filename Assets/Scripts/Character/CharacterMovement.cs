@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
@@ -5,11 +6,10 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float jump;
     [SerializeField] private LayerMask block_Stay;
-    [SerializeField] private SpriteRenderer[] legs;
-    [SerializeField] private Animation _animation;
     [SerializeField] private CharacterMovementAnimation _characterMovementAnimation;
 
     private Rigidbody2D rigidBody;
+    private bool _isIgnorePlatform;
 
     void Start()
     {
@@ -31,9 +31,14 @@ public class CharacterMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.S))
         {
-            Physics2D.IgnoreLayerCollision(10, 18, true);
+            IgnorePlatform();
             Invoke("IgnorePlatform", 0.5f);
         }
+    }
+    private void IgnorePlatform()
+    {
+        _isIgnorePlatform = !_isIgnorePlatform;
+        Physics2D.IgnoreLayerCollision(10, 18, _isIgnorePlatform);
     }
 
     private void Move()

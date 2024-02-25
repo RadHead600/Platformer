@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public abstract class Enemy : Unit
+public class Enemy : Unit
 {
     [SerializeField] private Rigidbody2D _rigidbody2D;
     [SerializeField] private int _points;

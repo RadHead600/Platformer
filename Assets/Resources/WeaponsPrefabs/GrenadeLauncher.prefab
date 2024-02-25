@@ -78,6 +78,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -122,14 +123,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 9057923345590075346}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be8b5414d5e2acc4d8be64d87023979b, type: 3}
+  m_Script: {fileID: 11500000, guid: 75966a3eff3056a4bb841aefed73aaec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recharge: 1
-  damage: 100
-  speed: 10
-  magazine: 6
-  delay: 7
-  spread: 2
-  posAttack: {fileID: 7218031929394726307}
-  resourcesBulletLoad: 2
+  _posAttack: {fileID: 7218031929394726307}
+  _weaponParameters: {fileID: 11400000, guid: d427fe67700bf79449ec6996c9047be4, type: 2}
+  _takeBulletCountFromMagazine: 1

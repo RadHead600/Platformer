@@ -45,8 +45,12 @@ public class Weapon : MonoBehaviour
 public enum ResourcesBullet
 {
     StandartBullet,
+    StandartBulletEnemy,
     ArmorPiercingBullet,
+    ArmorPiercingBulletEnemy,
     ExplosiveBullet,
-    Missiles
+    ExplosiveBulletEnemy,
+    Missiles,
+    Missilesenemy
 }
 

@@ -11,6 +11,7 @@ public class ExplosiveBullets : Bullet, IGrounded
     [SerializeField] private Rigidbody2D _rigidBody2D;
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private CircleCollider2D _circleCollider2D;
+    [SerializeField] private CapsuleCollider2D _capsuleCollider2D;
 
     private const float GROUND_RADIUS = 0.2f;
 
@@ -67,7 +68,7 @@ public class ExplosiveBullets : Bullet, IGrounded
         position.x = -1.0f;
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, GROUND_RADIUS, Blocks);
 
-        if (colliders.Length > 0.8F && _circleCollider2D == null)
+        if (colliders.Length > 0.8F)
         {
             stopRun = true;
             _rigidBody2D.constraints = RigidbodyConstraints2D.FreezeAll;
@@ -87,7 +88,7 @@ public class ExplosiveBullets : Bullet, IGrounded
     protected void CreateExplosion()
     {
         _particleSystem.Play(true);
-        gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
+        _capsuleCollider2D.enabled = false;
         _circleCollider2D.radius = 0;
         _circleCollider2D.isTrigger = true;
         _spriteRenderer.sprite = _switchSprite;

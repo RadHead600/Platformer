@@ -39,7 +39,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5929568630976895531}
-  m_Layer: 9
+  - component: {fileID: 7332424644682248801}
+  m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,6 +61,19 @@ Transform:
   m_Father: {fileID: 5932425635346691069}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7332424644682248801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5926777959140640307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f70eb11309515724297b800481587b2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _body: {fileID: 5932425635346691069}
 --- !u!1 &5926956837009469479
 GameObject:
   m_ObjectHideFlags: 0
@@ -70,7 +84,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5932837518529117197}
   - component: {fileID: 5814626881315777763}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,6 +120,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
@@ -151,7 +166,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5932425635346691069}
   - component: {fileID: 5814682839295854655}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -189,6 +204,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
@@ -233,10 +249,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5929933030105361199}
+  - component: {fileID: 5174140626207180353}
   - component: {fileID: 9116492615603411387}
+  - component: {fileID: 1294973314367932420}
   - component: {fileID: 2041965674562953240}
   - component: {fileID: 2097900877}
-  - component: {fileID: 1294973314367932420}
   m_Layer: 9
   m_Name: EnemyOriginal
   m_TagString: Untagged
@@ -260,6 +277,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5174140626207180353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5927082732617228929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2d88a5693cefc242b42a3de76ef4874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _minHp: 0
+  _hp: 50
+  _rigidbody2D: {fileID: 2097900877}
+  _points: 10
 --- !u!114 &9116492615603411387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,11 +305,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ced116eaaf29f6749a2564851c9822b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  points: 0
-  hand: {fileID: 5929568630976895531}
-  body: {fileID: 5932425635346691069}
-  hp: 100
+  _rotateWeapon: {fileID: 7332424644682248801}
+  _hand: {fileID: 5926777959140640307}
+  _weapon: {fileID: 0}
+--- !u!114 &1294973314367932420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5927082732617228929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb72f1183c08f394195739ce5a0d3ea9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _activePos: {fileID: 6506411580073491376}
+  _ativeRange: 7
+  _entityLayer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!70 &2041965674562953240
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -290,8 +338,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.020056129, y: 0.35444307}
-  m_Size: {x: 0.54011226, y: 0.74587107}
+  m_Offset: {x: 0.020056129, y: 0.6234317}
+  m_Size: {x: 0.54011226, y: 1.2838483}
   m_Direction: 0
 --- !u!50 &2097900877
 Rigidbody2D:
@@ -314,23 +362,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1294973314367932420
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5927082732617228929}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb72f1183c08f394195739ce5a0d3ea9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activePos: {fileID: 6506411580073491376}
-  ativeRange: 13
-  entityLayer:
-    serializedVersion: 2
-    m_Bits: 1024
 --- !u!1 &5927297344904384063
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,9 +372,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5929870291974338989}
   - component: {fileID: 5815843692572081469}
-  - component: {fileID: 245053620613741872}
-  - component: {fileID: 172615261}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Head
   m_TagString: Head
   m_Icon: {fileID: 0}
@@ -379,6 +408,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
@@ -414,43 +444,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &245053620613741872
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5927297344904384063}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.004247844, y: -0.025092632}
-  serializedVersion: 2
-  m_Radius: 0.4110893
---- !u!50 &172615261
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5927297344904384063}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 7
 --- !u!1 &5927479323105308775
 GameObject:
   m_ObjectHideFlags: 0
@@ -461,7 +454,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5929602905272141415}
   - component: {fileID: 5814619237355743551}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Leg (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -497,6 +490,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:

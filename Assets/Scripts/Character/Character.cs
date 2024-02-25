@@ -8,10 +8,10 @@ public class Character : Unit
     [SerializeField] private RotateWeapon _rotateWeapon;
     [SerializeField] private CharacterWeapon _characterWeapon;
     [SerializeField] private CharacterAttack _characterAttack;
-    [SerializeField] private CharacterStatUI _characterStatUI;
+    [SerializeField] private CharacterStatsUI _characterStatUI;
 
     private float _offset;
-    private Coroutine _attackCoroutine;
+    public Coroutine AttackCoroutine { get; set; }
 
     public float Offset
     {
@@ -38,8 +38,8 @@ public class Character : Unit
     {
         if (Input.GetMouseButton(0))
         {
-            if (_attackCoroutine == null)
-                _attackCoroutine = StartCoroutine(_characterAttack.Attack());
+            if (AttackCoroutine == null)
+                AttackCoroutine = StartCoroutine(_characterAttack.Attack());
         }
     }
 
@@ -65,5 +65,6 @@ public class Character : Unit
     {
         _shild.gameObject.SetActive(true);
         _shild.AddArmor(addArmor);
+        _characterStatUI.ChangeText(_characterStatUI.ArmorText, _shild.HP.ToString());
     }
 }

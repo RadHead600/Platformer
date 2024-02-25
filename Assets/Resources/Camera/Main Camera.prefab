@@ -13,13 +13,14 @@ GameObject:
   - component: {fileID: 4912117400861251915}
   - component: {fileID: 4912117400861251912}
   - component: {fileID: 1300631823118735438}
+  - component: {fileID: 1104155655}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4912117400861252022
 Transform:
   m_ObjectHideFlags: 0
@@ -104,6 +105,7 @@ MonoBehaviour:
   m_IgnoreTimeScale: 0
   m_WorldUpOverride: {fileID: 0}
   m_UpdateMethod: 2
+  m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
     m_Time: 2
@@ -132,7 +134,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27b8f0226374bef4eba93e6d82095158, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 4912117400861251914}
+  _pauseMenu: {fileID: 0}
+--- !u!114 &1104155655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4912117400861251914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef4b9daa2d5bc7f459b829da3ab95d4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6855445623092610215
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,6 +215,7 @@ GameObject:
   - component: {fileID: 2195647675206445529}
   - component: {fileID: 1113236223491518358}
   - component: {fileID: 1023909425234742837}
+  - component: {fileID: 9732595}
   m_Layer: 0
   m_Name: DeleteEnemys
   m_TagString: Untagged
@@ -260,3 +275,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f2431806a8ad77498ee54414eab48de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &9732595
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6946766333523562082}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

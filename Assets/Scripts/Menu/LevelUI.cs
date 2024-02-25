@@ -1,11 +1,12 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
-public class LevelUI
+public class LevelUI : MonoBehaviour
 {
     [SerializeField] private Button _levelButton;
-    [SerializeField] private Text _completedText;
+    [SerializeField] private TextMeshProUGUI _completedText;
 
     public Button LevelButton => _levelButton;
-    public Text CompletedText => _completedText;
+    public TextMeshProUGUI CompletedText => _completedText;
 }
